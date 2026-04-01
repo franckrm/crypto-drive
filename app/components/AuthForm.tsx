@@ -6,9 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import {
   Field,
+  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldLegend,
+  FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
@@ -53,50 +56,56 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
       <h1 className="form-title">
         {type === "sign-in" ? "Sign In" : "Sign Up"}
       </h1>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full sm:max-w-md">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>Profile Settings</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Update your profile information below.
           </CardDescription>
-          <CardAction>
-            <Button variant="link">Sign Up</Button>
-          </CardAction>
         </CardHeader>
         <CardContent>
-          <form>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
-            </div>
-          </form>
+          <FieldGroup>
+            <Controller
+              name="username"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-input-username">
+                    Username
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-rhf-input-username"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="shadcn"
+                    autoComplete="username"
+                  />
+                  <FieldDescription>
+                    This is your public display name. Must be between 3 and 10
+                    characters. Must only contain letters, numbers, and
+                    underscores.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
         </CardContent>
-        <CardFooter className="flex-col gap-2">
-          <Button type="submit" className="w-full">
-            Login
-          </Button>
-          <Button variant="outline" className="w-full">
-            Login with Google
-          </Button>
+        <CardFooter>
+          <Field orientation="horizontal">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => form.reset()}
+            >
+              Reset
+            </Button>
+            <Button type="submit" form="form-rhf-input">
+              Save
+            </Button>
+          </Field>
         </CardFooter>
       </Card>
     </>
