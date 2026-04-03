@@ -58,6 +58,16 @@
   }
 }
 
+@layer utilities {
+  .h1 {
+    @apply text-[34px] leading-[42px] font-bold;
+  }
+
+  .body-1 {
+    @apply text-[16px] leading-[24px] font-normal;
+  }
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
