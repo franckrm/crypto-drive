@@ -24,66 +24,104 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  username: z
+  fullName: z
     .string()
-    .min(3, "Username must be at least 3 characters.")
-    .max(10, "Username must be at most 10 characters.")
-    .regex(
-      /^[a-zA-Z0-9_]+$/,
-      "Username can only contain letters, numbers, and underscores.",
-    ),
+    .min(3, "Full name must be at least 3 characters.")
+    .max(100, "Full name must be at most 100 characters."),
+  email: z.email("Invalid email address."),
 });
 
 const AuthForm = ({ type }: { type: TypeForm }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      fullName: "",
+      email: "",
     },
   });
   function onSubmit(data: z.infer<typeof formSchema>) {}
   return (
     <>
-      <div>Sing UP</div>
-      <Card className="w-full sm:max-w-md">
-        <CardContent>
-          <form id="form-rhf-input" onSubmit={form.handleSubmit(onSubmit)}>
-            <FieldGroup>
+      <form
+        id="form-rhf-input"
+        className="auth-form"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <h1 className="form-title">
+          {type == "sign-in" ? "Sign In" : "Sign Up"}
+        </h1>
+        <FieldGroup>
+          {type == "sign-up" && (
+            <>
               <Controller
-                name="username"
+                name="fullName"
                 control={form.control}
                 render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor="form-rhf-input-username">
-                      Username
+                  <Field
+                    data-invalid={fieldState.invalid}
+                    className="shad-form-item"
+                  >
+                    <FieldLabel
+                      htmlFor="form-rhf-input-username"
+                      className="shad-form-label"
+                    >
+                      Full Name
                     </FieldLabel>
                     <Input
                       {...field}
                       id="form-rhf-input-username"
                       aria-invalid={fieldState.invalid}
-                      placeholder="shadcn"
-                      autoComplete="username"
+                      placeholder="Enter your full name"
+                      autoComplete="fullName"
+                      className="shad-input"
                     />
-                    <FieldDescription>
-                      This is your public display name. Must be between 3 and 10
-                      characters. Must only contain letters, numbers, and
-                      underscores.
-                    </FieldDescription>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
                   </Field>
                 )}
               />
-            </FieldGroup>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button type="submit" form="form-rhf-input">
-            Save
+              <Controller
+                name="email"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field
+                    data-invalid={fieldState.invalid}
+                    className="shad-form-item"
+                  >
+                    <FieldLabel
+                      htmlFor="form-rhf-input-username"
+                      className="shad-form-label"
+                    >
+                      Email
+                    </FieldLabel>
+                    <Input
+                      {...field}
+                      id="form-rhf-input-username"
+                      aria-invalid={fieldState.invalid}
+                      placeholder="Enter your email"
+                      autoComplete="email"
+                      className="shad-input"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            </>
+          )}
+        </FieldGroup>
+        <Field orientation="horizontal">
+          <Button
+            type="submit"
+            form="form-rhf-input"
+            className="form-submit-button"
+          >
+            {type == "sign-in" ? "Sign In" : "Sign Up"}
           </Button>
-        </CardFooter>
-      </Card>
+        </Field>
+      </form>
     </>
   );
 };

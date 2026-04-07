@@ -66,6 +66,43 @@
   .body-1 {
     @apply text-[16px] leading-[24px] font-normal;
   }
+
+  .body-2 {
+    @apply text-[14px] leading-[20px] font-normal;
+  }
+
+  .auth-form {
+    @apply flex! max-h-[800px]! w-full! max-w-[580px]! flex-col! justify-center! space-y-6! transition-all! lg:h-full! lg:space-y-8!;
+  }
+  .form-title {
+    @apply text-light-100! text-center! text-[34px]! leading-[42px]! font-bold! md:text-left!;
+  }
+
+  .shad-form-label {
+    @apply text-light-100! w-full! pt-2! text-[14px] leading-[20px] font-normal;
+  }
+
+  .shad-form-item {
+    @apply border-light-300 shadow-drop-1 flex h-[78px] flex-col justify-center rounded-xl border px-4;
+  }
+  .shad-no-focus {
+    @apply ring-offset-transparent outline-none focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 focus-visible:outline-none;
+  }
+
+  .shad-input {
+    @apply placeholder:text-light-200 border-none p-0 text-[14px] leading-[20px] font-normal shadow-none ring-offset-transparent outline-none focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 focus-visible:outline-none;
+  }
+
+  .button {
+    @apply text-[14px] leading-[20px] font-medium;
+  }
+  .primary-btn {
+    @apply bg-brand hover:bg-brand-100 rounded-full text-[14px] leading-[20px] font-medium transition-all;
+  }
+
+  .form-submit-button {
+    @apply bg-brand hover:bg-brand-100 h-[66px] w-full rounded-full text-[14px] leading-[20px] font-medium transition-all;
+  }
 }
 
 @theme inline {
