@@ -79,7 +79,7 @@
   }
 
   .shad-form-label {
-    @apply text-light-100! w-full! pt-2! text-[14px] leading-[20px] font-normal;
+    @apply text-light-100! w-full! pt-2! text-[14px]! leading-[20px]! font-normal!;
   }
 
   .shad-form-item {
@@ -109,7 +109,7 @@
   }
 
   .shad-form-message {
-    @apply text-red! text-[14px]! leading-[20px]! font-normal! ml-4!;
+    @apply text-red! ml-4! text-[14px]! leading-[20px]! font-normal!;
   }
 }
 
