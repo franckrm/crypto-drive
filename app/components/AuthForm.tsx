@@ -57,6 +57,7 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
                 name="fullName"
                 control={form.control}
                 render={({ field, fieldState }) => (
+                  <>
                   <Field
                     data-invalid={fieldState.invalid}
                     className="shad-form-item"
@@ -70,21 +71,25 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
                     <Input
                       {...field}
                       id="form-rhf-input-fullName"
-                      aria-invalid={fieldState.invalid}
+                      // aria-invalid={fieldState.invalid}
                       placeholder="Enter your full name"
                       autoComplete="vz"
                       className="shad-input"
                     />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
+                   
                   </Field>
+                   {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]}  className="shad-form-message"/>
+                    )}
+                  </>
+                  
                 )}
               />
               <Controller
                 name="email"
                 control={form.control}
                 render={({ field, fieldState }) => (
+                  <>
                   <Field
                     data-invalid={fieldState.invalid}
                     className="shad-form-item"
@@ -98,15 +103,17 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
                     <Input
                       {...field}
                       id="form-rhf-input-email"
-                      aria-invalid={fieldState.invalid}
+                      aria-invalid={false}
                       placeholder="Enter your email"
                       autoComplete="email"
                       className="shad-input"
                     />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
+                   
                   </Field>
+                      {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]}  className="shad-form-message"/>
+                    )}
+                  </>
                 )}
               />
             </>
