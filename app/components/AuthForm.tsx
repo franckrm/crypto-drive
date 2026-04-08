@@ -62,17 +62,17 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
                     className="shad-form-item"
                   >
                     <FieldLabel
-                      htmlFor="form-rhf-input-username"
+                      htmlFor="form-rhf-input-fullName"
                       className="shad-form-label"
                     >
                       Full Name
                     </FieldLabel>
                     <Input
                       {...field}
-                      id="form-rhf-input-username"
+                      id="form-rhf-input-fullName"
                       aria-invalid={fieldState.invalid}
                       placeholder="Enter your full name"
-                      autoComplete="fullName"
+                      autoComplete="vz"
                       className="shad-input"
                     />
                     {fieldState.invalid && (
@@ -90,14 +90,14 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
                     className="shad-form-item"
                   >
                     <FieldLabel
-                      htmlFor="form-rhf-input-username"
+                      htmlFor="form-rhf-input-email"
                       className="shad-form-label"
                     >
                       Email
                     </FieldLabel>
                     <Input
                       {...field}
-                      id="form-rhf-input-username"
+                      id="form-rhf-input-email"
                       aria-invalid={fieldState.invalid}
                       placeholder="Enter your email"
                       autoComplete="email"
@@ -113,11 +113,7 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
           )}
         </FieldGroup>
         <Field orientation="horizontal">
-          <Button
-            type="submit"
-            form="form-rhf-input"
-            className="form-submit-button"
-          >
+          <Button type="submit" className="form-submit-button">
             {type == "sign-in" ? "Sign In" : "Sign Up"}
           </Button>
         </Field>
