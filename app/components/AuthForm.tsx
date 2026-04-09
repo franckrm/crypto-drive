@@ -6,23 +6,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useState } from "react";
+import Image from "next/image";
 
 const formSchema = z.object({
   fullName: z
@@ -33,6 +27,9 @@ const formSchema = z.object({
 });
 
 const AuthForm = ({ type }: { type: TypeForm }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,7 +37,9 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
       email: "",
     },
   });
-  function onSubmit(data: z.infer<typeof formSchema>) {}
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data);
+  }
   return (
     <>
       <form
@@ -126,9 +125,23 @@ const AuthForm = ({ type }: { type: TypeForm }) => {
           />
         </FieldGroup>
         <Field orientation="horizontal">
-          <Button type="submit" className="form-submit-button">
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="form-submit-button"
+          >
             {type == "sign-in" ? "Sign In" : "Sign Up"}
+            {isLoading && (
+              <Image
+                src="/assets/icons/loader.svg"
+                alt="loader"
+                width={24}
+                height={24}
+                className="ml-2 animate-spin"
+              />
+            )}
           </Button>
+          {errorMessage && <p className="error-message">*{errorMessage}*</p>}
         </Field>
         <div className="body-2 flex justify-center">
           <p className="text-light-100">
