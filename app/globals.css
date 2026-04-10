@@ -45,7 +45,7 @@
   --animate-caret-blink: caret-blink 1.25s ease-out infinite;
 
   /* Keyframes personalizados */
-   @keyframes caret-blink {
+  @keyframes caret-blink {
     0%,
     70%,
     100% {
@@ -110,6 +110,10 @@
 
   .shad-form-message {
     @apply text-red! ml-4! text-[14px]! leading-[20px]! font-normal!;
+  }
+
+  .error-message {
+    @apply bg-error/5 text-error mx-auto w-fit rounded-xl px-8 py-4 text-center text-[14px] leading-[20px] font-normal;
   }
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-type TypeForm = "sign-in" | "sign-up";
+type FormType = "sign-in" | "sign-up";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
@@ -18,17 +18,21 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
-const formSchema = z.object({
-  fullName: z
-    .string()
-    .min(3, "Full name must be at least 3 characters.")
-    .max(100, "Full name must be at most 100 characters."),
-  email: z.email("Invalid email address."),
-});
+const authFormSchema = (formType: FormType) => {
+  return z.object({
+    email: z.email("Invalid email address."),
+    fullName:
+      formType === "sign-up"
+        ? z.string().min(2).max(50)
+        : z.string().optional(),
+  });
+};
 
-const AuthForm = ({ type }: { type: TypeForm }) => {
+const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const formSchema = authFormSchema(type);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
