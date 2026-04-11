@@ -18,6 +18,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { createAccount } from "@/lib/actions/user.actions";
+import OTPModel from "./OTPModel";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
@@ -175,6 +176,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </Link>
         </div>
       </form>
+      {true && (
+        <OTPModel email={form.getValues("email")} accountId={accountId} />
+      )}
     </>
   );
 };

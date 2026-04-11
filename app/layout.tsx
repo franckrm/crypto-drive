@@ -3,7 +3,7 @@ import { Poppins, Roboto, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={cn("font-poppins", poppins.variable)}>
+    <html lang="pt-BR" className={cn("font-poppins", poppins.variable, "font-sans", geist.variable)}>
       <body>{children}</body>
     </html>
   );
