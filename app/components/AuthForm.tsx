@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
+import { createAccount } from "@/lib/actions/user.actions";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
@@ -31,6 +32,7 @@ const authFormSchema = (formType: FormType) => {
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [accountId, setAccountId] = useState(null);
 
   const formSchema = authFormSchema(type);
 
@@ -41,8 +43,20 @@ const AuthForm = ({ type }: { type: FormType }) => {
       email: "",
     },
   });
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setErrorMessage("");
+    try {
+      const user = await createAccount({
+        fullName: values.fullName || "",
+        email: values.email,
+      });
+      setAccountId(user.accountId);
+    } catch {
+      setErrorMessage("Failed to create account. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   }
   return (
     <>
@@ -145,8 +159,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
               />
             )}
           </Button>
-          {errorMessage && <p className="error-message">*{errorMessage}*</p>}
         </Field>
+        {errorMessage && <p className="error-message">*{errorMessage}*</p>}
         <div className="body-2 flex justify-center">
           <p className="text-light-100">
             {type == "sign-in"
