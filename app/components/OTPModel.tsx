@@ -17,12 +17,12 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import Image from "next/image";
-import { verifySecret } from "@/lib/actions/user.actions";
+import { sendEmailOTP, verifySecret } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 
 function OTPModel({ accountId, email }: { accountId: string; email: string }) {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +40,9 @@ function OTPModel({ accountId, email }: { accountId: string; email: string }) {
     setIsLoading(false);
   };
 
-  const handleResendOTP = async () => {};
+  const handleResendOTP = async () => {
+    await sendEmailOTP(email);
+  };
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
