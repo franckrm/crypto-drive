@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation";
 
 function OTPModel({ accountId, email }: { accountId: string; email: string }) {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

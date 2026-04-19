@@ -59,6 +59,9 @@
 }
 
 @layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
   .h1 {
     @apply text-[34px] leading-[42px] font-bold;
   }
@@ -67,6 +70,9 @@
     @apply text-[24px] leading-[36px] font-bold;
   }
 
+  .h5 {
+    @apply text-[16px] leading-[24px] font-semibold;
+  }
   .body-1 {
     @apply text-[16px] leading-[24px] font-normal;
   }
@@ -140,6 +146,71 @@
 
   .shad-submit-btn {
     @apply bg-brand! hover:bg-brand-100! rounded-full! text-[14px]! leading-[20px]! font-medium! transition-all!;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    border-radius: 0px;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 0px;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb:hover {
+    /* background: #1e2238; */
+    background: transparent;
+  }
+
+  .main-content {
+    @apply bg-light-400! h-full! flex-1! overflow-auto! px-5! py-7! sm:mr-7! sm:rounded-[30px]! md:mb-7! md:px-9! md:py-10!;
+  }
+
+  .header {
+    @apply hidden! items-center! justify-between! gap-5! p-5! sm:flex! lg:py-7! xl:gap-10!;
+  }
+  .header-wrapper {
+    @apply flex min-w-fit! items-center justify-center gap-4!;
+  }
+
+  .sign-out-button {
+    @apply bg-brand/10! text-brand! hover:bg-brand/20! flex h-[52px]! min-w-[54px]! items-center! justify-center! rounded-full! p-0! shadow-none! transition-all!;
+  }
+
+  .sidebar {
+    @apply hidden! h-screen! w-[90px]! flex-col! overflow-auto! px-5! py-7! sm:flex! lg:w-[280px]! xl:w-[325px]!;
+  }
+
+  .sidebar-nav {
+    @apply text-brand! mt-9! flex-1! gap-1! text-[16px]! leading-[24px]! font-semibold!;
+  }
+
+  .sidebar-nav-item {
+    @apply text-light-100! flex! h-[52px]! items-center! justify-center! gap-4! rounded-xl! text-[16px]! leading-[24px]! font-semibold! lg:w-full! lg:justify-start! lg:rounded-full! lg:px-[30px]!;
+  }
+
+  .shad-active {
+    @apply bg-brand! shadow-drop-2! text-white!;
+  }
+
+  .nav-icon {
+    @apply w-6! opacity-25! invert! filter!;
+  }
+  .nav-icon-active {
+    @apply opacity-100! invert-0!;
+  }
+
+  .sidebar-user-info {
+    @apply bg-brand/10! text-light-100! mt-4! flex! items-center! justify-center! gap-2! rounded-full! p-1! lg:justify-start! lg:p-3!;
+  }
+  .sidebar-user-avatar {
+    @apply aspect-square! w-10! rounded-full! object-cover!;
   }
 }
 

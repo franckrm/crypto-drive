@@ -5,6 +5,7 @@ import { createAdminClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
+import { avatarPlaceholderUrl } from "@/constants";
 
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
@@ -56,14 +57,13 @@ export const createAccount = async ({
       {
         fullName,
         email,
-        avatar:
-          "https://pixabay.com/vectors/avatar-icon-placeholder-facebook-1577909/",
+        avatar: avatarPlaceholderUrl,
         accountId,
       },
     );
-
-    return parseStringify({ accountId });
   }
+
+  return parseStringify({ accountId });
 };
 
 export const verifySecret = async ({

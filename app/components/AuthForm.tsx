@@ -53,7 +53,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
         fullName: values.fullName || "",
         email: values.email,
       });
-      console.log(user);
       setAccountId(user.accountId);
     } catch (error) {
       console.log(error);
