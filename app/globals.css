@@ -216,6 +216,29 @@
   .caption {
     @apply text-[12px] leading-[16px] font-normal;
   }
+
+  .mobile-header {
+    @apply flex! h-[60px]! justify-between! px-5! sm:hidden!;
+  }
+
+  .shad-sheet {
+    @apply pt-0!;
+  }
+  .shad-sheet button,
+  .shad-dialog button {
+    @apply outline-none! focus:ring-0! focus:ring-offset-0! focus-visible:border-none! focus-visible:ring-transparent! focus-visible:ring-offset-0! focus-visible:outline-none!;
+  }
+  .shad-dropdown-item {
+    @apply cursor-pointer!;
+  }
+
+  .header-user-avatar {
+    @apply aspect-square! w-10! rounded-full! object-cover!;
+  }
+
+  .header-user {
+    @apply text-light-100! sm:bg-brand/10! my-3! flex! items-center! gap-2! rounded-full! p-1! sm:justify-center! lg:justify-start! lg:p-3!;
+  }
 }
 
 @theme inline {
