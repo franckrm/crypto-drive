@@ -212,6 +212,10 @@
   .sidebar-user-avatar {
     @apply aspect-square! w-10! rounded-full! object-cover!;
   }
+
+  .caption {
+    @apply text-[12px] leading-[16px] font-normal;
+  }
 }
 
 @theme inline {
