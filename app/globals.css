@@ -239,6 +239,19 @@
   .header-user {
     @apply text-light-100! sm:bg-brand/10! my-3! flex! items-center! gap-2! rounded-full! p-1! sm:justify-center! lg:justify-start! lg:p-3!;
   }
+
+  .mobile-nav {
+    @apply text-brand! flex-1! gap-1! text-[16px]! leading-[24px]! font-semibold!;
+  }
+  .mobile-nav-list {
+    @apply flex! flex-1! flex-col! gap-4!;
+  }
+  .mobile-nav-item {
+    @apply text-light-100 flex! h-[52px]! w-full! items-center! justify-start! gap-4! rounded-full! px-6! text-[16px]! leading-[24px]! font-semibold!;
+  }
+  .mobile-sign-out-button {
+    @apply bg-brand/10 text-brand! hover:bg-brand/20! flex h-[52px]! w-full! items-center! gap-4! rounded-full! px-6! text-[16px]! leading-[24px]! font-semibold! shadow-none! transition-all!;
+  }
 }
 
 @theme inline {
