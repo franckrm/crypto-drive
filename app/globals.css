@@ -241,7 +241,7 @@
   }
 
   .mobile-nav {
-    @apply text-brand! flex-1! gap-1! text-[16px]! leading-[24px]! font-semibold!;
+    @apply text-brand! gap-1! text-[16px]! leading-[24px]! font-semibold!;
   }
   .mobile-nav-list {
     @apply flex! flex-1! flex-col! gap-4!;

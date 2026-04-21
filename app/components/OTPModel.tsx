@@ -61,9 +61,7 @@ function OTPModel({ accountId, email }: { accountId: string; email: string }) {
           </AlertDialogTitle>
           <AlertDialogDescription className="subtitle-2 text-light-100 text-center">
             We&apos;ve sent a code to{" "}
-            <span className="text-brand pl-1">
-              {email}franckrm2001@gmail.com
-            </span>
+            <span className="text-brand pl-1">{email}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <InputOTP maxLength={6} value={password} onChange={setPassword}>
