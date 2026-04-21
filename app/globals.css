@@ -62,6 +62,7 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
+
   .h1 {
     @apply text-[34px] leading-[42px] font-bold;
   }
@@ -69,7 +70,9 @@
   .h2 {
     @apply text-[24px] leading-[36px] font-bold;
   }
-
+  .h4 {
+    @apply text-[18px] leading-[20px] font-medium;
+  }
   .h5 {
     @apply text-[16px] leading-[24px] font-semibold;
   }
@@ -251,6 +254,29 @@
   }
   .mobile-sign-out-button {
     @apply bg-brand/10 text-brand! hover:bg-brand/20! flex h-[52px]! w-full! items-center! gap-4! rounded-full! px-6! text-[16px]! leading-[24px]! font-semibold! shadow-none! transition-all!;
+  }
+
+  .uploader-button {
+    @apply bg-brand hover:bg-brand-100 shadow-drop-1! h-[52px]! gap-2! rounded-full px-10! text-[14px] leading-[20px] font-medium transition-all;
+  }
+
+  .uploader-preview-list {
+    @apply shadow-drop-3! fixed! right-10! bottom-10! z-50! flex! size-full! h-fit! max-w-[480px]! flex-col! gap-3! rounded-[20px]! bg-white! p-7!;
+  }
+
+  .uploader-preview-item {
+    @apply shadow-drop-3! flex! items-center! justify-between! gap-3! rounded-xl! p-3!;
+  }
+
+  .thumbnail {
+    @apply bg-brand/10 flex size-[50px] min-w-[50px] items-center justify-center overflow-hidden rounded-full;
+  }
+  .thumbnail-image {
+    @apply size-full! object-cover! object-center!;
+  }
+
+  .preview-item-name {
+    @apply mb-2 line-clamp-1 max-w-[300px] text-[14px]! leading-[20px]! font-semibold!;
   }
 }
 
