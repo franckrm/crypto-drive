@@ -49,7 +49,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
                     url={convertFileToUrl(file)}
                   />
                   <div className="preview-item-name">
-                    {file.name}
+                    <p className="line-clamp-1!">{file.name}</p>
                     <Image
                       src="/assets/icons/file-loader.gif"
                       width={80}
@@ -58,6 +58,13 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
                     />
                   </div>
                 </div>
+                <Image
+                  src="assets/icons/remove.svg"
+                  width={24}
+                  height={24}
+                  alt="Remove"
+                  onClick={(e) => {}}
+                />
               </li>
             );
           })}

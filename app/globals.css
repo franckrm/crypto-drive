@@ -269,14 +269,14 @@
   }
 
   .thumbnail {
-    @apply bg-brand/10 flex size-[50px] min-w-[50px] items-center justify-center overflow-hidden rounded-full;
+    @apply bg-brand/10! flex! size-[50px]! min-w-[50px]! items-center! justify-center! overflow-hidden rounded-full!;
   }
   .thumbnail-image {
     @apply size-full! object-cover! object-center!;
   }
 
   .preview-item-name {
-    @apply mb-2 line-clamp-1 max-w-[300px] text-[14px]! leading-[20px]! font-semibold!;
+    @apply mb-2! max-w-[300px]! text-[14px]! leading-[20px]! font-semibold!;
   }
 }
 
